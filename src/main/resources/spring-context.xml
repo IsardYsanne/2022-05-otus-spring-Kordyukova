@@ -6,6 +6,15 @@
 
     <bean id="studentTestRepository" class="ru.otus.studenttest.repository.StudentTestRepositoryImpl">
         <constructor-arg name="studentTest" value="classpath:test.csv"/>
+        <constructor-arg name="studentTestReader" ref="studentTestReader"/>
+    </bean>
+    <bean id="resourceHandler" class="ru.otus.studenttest.repository.ResourceHandlerImpl">
+    </bean>
+    <bean id="studentTestReader" class="ru.otus.studenttest.repository.StudentTestReaderImpl">
+        <constructor-arg name="resourceHandler" ref="resourceHandler"/>
+        <constructor-arg name="studentTestPrinter" ref="studentTestPrinter"/>
+    </bean>
+    <bean id="studentTestPrinter" class="ru.otus.studenttest.repository.StudentTestPrinterImpl">
     </bean>
     <bean id="testServiceImpl" class="ru.otus.studenttest.service.StudentTestServiceImpl">
         <constructor-arg name="studentTestRepository" ref="studentTestRepository"/>

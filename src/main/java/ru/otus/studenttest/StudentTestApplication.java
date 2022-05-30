@@ -5,7 +5,7 @@ import ru.otus.studenttest.service.StudentTestServiceImpl;
 
 public class StudentTestApplication {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         StudentTestServiceImpl testService = context.getBean("testServiceImpl", StudentTestServiceImpl.class);
         testService.getTest();

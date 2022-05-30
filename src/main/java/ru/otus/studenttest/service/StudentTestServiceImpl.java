@@ -11,7 +11,7 @@ public class StudentTestServiceImpl implements StudentTestService {
     }
 
     @Override
-    public void getTest() throws Exception {
+    public void getTest() {
         studentTestRepository.findTest();
     }
 }
