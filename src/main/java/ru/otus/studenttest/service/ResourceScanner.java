@@ -1,8 +1,8 @@
-package ru.otus.studenttest.repository;
+package ru.otus.studenttest.service;
 
 import org.springframework.core.io.Resource;
 
-public interface ResourceHandler {
+public interface ResourceScanner {
 
     Resource[] getResource(String resourceName);
 }
