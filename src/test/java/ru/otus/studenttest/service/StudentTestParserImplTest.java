@@ -5,6 +5,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -26,6 +28,11 @@ public class StudentTestParserImplTest {
                     "What year was the Cuban Missile Crisis happened?=1962, " +
                     "What was the name of the confrontation between the Soviet Union and the West?=Cold War}";
             assertEquals(actual, expected);
+            List<String> answersList = List.of("1932", "1924", "Alexander II", "1962", "Cold War");
+            for (int k = 0; k < answersList.size(); k++) {
+                List<String> values = new ArrayList<>(map.values());
+                assertEquals(answersList.get(k), values.get(k));
+            }
         } catch (IOException e) {
             throw new RuntimeException("Failed to read the resources folder: " + e.getMessage(), e);
         }

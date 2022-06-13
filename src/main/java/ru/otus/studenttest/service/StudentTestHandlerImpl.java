@@ -1,6 +1,5 @@
 package ru.otus.studenttest.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -39,7 +38,6 @@ public class StudentTestHandlerImpl implements StudentTestHandler {
     @Value("${correctAnswersNumberForPassExam}")
     private int correctAnswersNumberForPassExam;
 
-    @Autowired
     public StudentTestHandlerImpl(StudentTestParser studentTestParser) {
         this.studentTestParser = studentTestParser;
     }
@@ -68,6 +66,7 @@ public class StudentTestHandlerImpl implements StudentTestHandler {
 
         Map<String, String> tests = studentTestParser.parseResourceContent(resources);
         Set<String> questions = tests.keySet();
+        int testSize = tests.size();
         int counterGoodAnswers = 0;
         for (String question : questions) {
             System.out.println(INTRODUCTION);
@@ -78,7 +77,7 @@ public class StudentTestHandlerImpl implements StudentTestHandler {
         }
         StudentTest studentTest = new StudentTest();
         studentTest.setGoodAnswersNumber(counterGoodAnswers);
-        getResult(counterGoodAnswers);
+        getResult(counterGoodAnswers, testSize);
     }
 
     /**
@@ -109,8 +108,9 @@ public class StudentTestHandlerImpl implements StudentTestHandler {
      *
      * @param counterGoodAnswers количество правильных ответов
      */
-    public void getResult(int counterGoodAnswers) {
-        if (counterGoodAnswers == 5) {
+    @Override
+    public void getResult(int counterGoodAnswers, int studentTestSize) {
+        if (counterGoodAnswers == studentTestSize) {
             System.out.println("What did you forget in IT? Go to historian! О_о ");
         } else if (counterGoodAnswers >= correctAnswersNumberForPassExam) {
             System.out.println("What a good guy(girl) you are! ^___^");
@@ -118,6 +118,6 @@ public class StudentTestHandlerImpl implements StudentTestHandler {
             System.out.println("Ha-ha-ha, you are prostofilya! :Р ");
         }
 
-        System.out.println("Correct answers " + counterGoodAnswers + "/" + 5);
+        System.out.println("Correct answers " + counterGoodAnswers + "/" + studentTestSize);
     }
 }
