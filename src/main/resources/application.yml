@@ -1,0 +1,8 @@
+resource:
+  path-en: test-en.csv
+  path-ru: test-ru.csv
+
+app:
+  version: 0.0.1
+
+correct-answers-number-for-pass-exam: 3

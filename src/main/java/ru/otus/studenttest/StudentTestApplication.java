@@ -1,14 +1,16 @@
 package ru.otus.studenttest;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.otus.studenttest.service.StudentTestServiceImpl;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import ru.otus.studenttest.service.StudentTestService;
 
+@SpringBootApplication
 public class StudentTestApplication {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
-        StudentTestServiceImpl testService = context.getBean("testServiceImpl", StudentTestServiceImpl.class);
-        testService.getTest();
-        context.close();
+        ApplicationContext applicationContext = SpringApplication.run(StudentTestApplication.class, args);
+        StudentTestService service =  applicationContext.getBean(StudentTestService.class);
+        service.findTest();
     }
 }

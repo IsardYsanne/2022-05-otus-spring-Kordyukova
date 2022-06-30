@@ -2,49 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version>
+        <relativePath/>
+    </parent>
     <groupId>ru.otus</groupId>
-    <artifactId>task</artifactId>
+    <artifactId>tasktwo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>student-test</name>
+    <name>studenttest</name>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <artifactSet>
-                                <excludes>
-                                    <exclude>classworlds:classworlds</exclude>
-                                    <exclude>junit:junit</exclude>
-                                    <exclude>jmock:*</exclude>
-                                    <exclude>*:xml-apis</exclude>
-                                    <exclude>org.apache.maven:lib:tests</exclude>
-                                    <exclude>log4j:log4j:jar:</exclude>
-                                </excludes>
-                            </artifactSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>ru.otus.studenttest.StudentTestApplication</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -56,14 +28,16 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.3.20</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

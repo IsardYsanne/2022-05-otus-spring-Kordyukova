@@ -1,17 +1,24 @@
 package ru.otus.studenttest.service;
 
-import ru.otus.studenttest.repository.StudentTestRepository;
+import org.springframework.stereotype.Service;
 
+/**
+ * Сервис для "Тестирования".
+ */
+@Service
 public class StudentTestServiceImpl implements StudentTestService {
 
-    private final StudentTestRepository studentTestRepository;
+    private final StudentTestResourceReader studentTestResourceReader;
 
-    public StudentTestServiceImpl(StudentTestRepository studentTestRepository) {
-        this.studentTestRepository = studentTestRepository;
+    private final MessageSourceService messageService;
+
+    public StudentTestServiceImpl(StudentTestResourceReader studentTestResourceReader, MessageSourceService messageService) {
+        this.studentTestResourceReader = studentTestResourceReader;
+        this.messageService = messageService;
     }
 
     @Override
-    public void getTest() {
-        studentTestRepository.findTest();
+    public void findTest() {
+        studentTestResourceReader.readResourceContent(messageService.getResourceName());
     }
 }

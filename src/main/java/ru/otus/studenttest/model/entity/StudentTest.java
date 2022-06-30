@@ -1,12 +1,19 @@
 package ru.otus.studenttest.model.entity;
 
+/**
+ * Сущность "Тестирования".
+ */
 public class StudentTest {
 
+    /**
+     * Название ресурса
+     */
     private String resourceName;
 
-    public StudentTest(String resourceName) {
-        this.resourceName = resourceName;
-    }
+    /**
+     * Порог для прохождения теста
+     */
+    private int goodAnswersNumber;
 
     public StudentTest() {
     }
@@ -17,5 +24,13 @@ public class StudentTest {
 
     public void setResourceName(String resourceName) {
         this.resourceName = resourceName;
+    }
+
+    public int getGoodAnswersNumber() {
+        return goodAnswersNumber;
+    }
+
+    public void setGoodAnswersNumber(int goodAnswersNumber) {
+        this.goodAnswersNumber = goodAnswersNumber;
     }
 }
