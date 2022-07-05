@@ -18,7 +18,6 @@ public class StudentTestResourceReaderImpl implements StudentTestResourceReader 
 
     private final StudentTestHandler studentTestHandler;
 
-    @Autowired
     public StudentTestResourceReaderImpl(ResourceScanner resourceScanner, StudentTestHandler studentTestHandler) {
         this.resourceScanner = resourceScanner;
         this.studentTestHandler = studentTestHandler;

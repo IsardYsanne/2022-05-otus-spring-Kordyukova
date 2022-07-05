@@ -24,7 +24,6 @@ public class MessageSourceServiceImpl implements MessageSourceService {
 
     private final MessageSource messageSource;
 
-    @Autowired
     public MessageSourceServiceImpl(MessageSource messageSource,
                                     @Value("${resource.path-en}") String pathEn,
                                     @Value("${resource.path-ru}") String pathRu) {

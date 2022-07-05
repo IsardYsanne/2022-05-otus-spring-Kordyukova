@@ -41,8 +41,6 @@ public class StudentTestHandlerImpl implements StudentTestHandler {
      */
     private final int correctAnswersNumberForPassExam;
 
-
-    @Autowired
     public StudentTestHandlerImpl(StudentTestParser studentTestParser,
                                   MessageSourceService messageService,
                                   @Value("${correct-answers-number-for-pass-exam}") int correctAnswersNumberForPassExam) {
