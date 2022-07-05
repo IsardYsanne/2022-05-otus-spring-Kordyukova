@@ -1,5 +1,7 @@
 package ru.otus.studenttest.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class StudentTestResourceReaderImpl implements StudentTestResourceReader {
+
+    private static final Logger logger = LoggerFactory.getLogger(StudentTestResourceReaderImpl.class);
 
     private final ResourceScanner resourceScanner;
 
@@ -30,7 +34,7 @@ public class StudentTestResourceReaderImpl implements StudentTestResourceReader 
     public void readResourceContent(String resourceName) {
         Resource[] resources = resourceScanner.getResource(resourceName);
         if (resources.length == 0) {
-            System.out.println("Warning: could not find any resources in this scanned package: " + resourceName);
+            logger.info("Warning: could not find any resources in this scanned package: " + resourceName);
         } else {
             studentTestHandler.testHandle(resources);
         }

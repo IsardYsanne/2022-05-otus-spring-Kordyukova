@@ -15,15 +15,15 @@ public class StudentTest {
      */
     private int goodAnswersNumber;
 
-    public StudentTest(String resourceName) {
-        this.resourceName = resourceName;
-    }
-
     public StudentTest() {
     }
 
     public String getResourceName() {
         return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
     }
 
     public int getGoodAnswersNumber() {

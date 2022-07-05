@@ -19,8 +19,7 @@ public class ResourceScannerImpl implements ResourceScanner {
     public Resource[] getResource(String resourceName) {
         try {
             PathMatchingResourcePatternResolver scanner = new PathMatchingResourcePatternResolver();
-            Resource[] resources = scanner.getResources(resourceName);
-            return resources;
+            return scanner.getResources(resourceName);
         } catch (IOException e) {
             throw new RuntimeException("Failed to read the resources folder: " + e.getMessage(), e);
         }

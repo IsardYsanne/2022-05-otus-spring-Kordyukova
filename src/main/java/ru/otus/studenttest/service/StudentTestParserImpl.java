@@ -33,7 +33,7 @@ public class StudentTestParserImpl implements StudentTestParser {
                     String[] itemsOfBlock = block.split(";");
                     for (int i = 0; i < itemsOfBlock.length; i++) {
                         String question = itemsOfBlock[0];
-                        String answer = itemsOfBlock[1];
+                        String answer = itemsOfBlock[itemsOfBlock.length - 1];
                         studentTest.put(question, answer);
                     }
                 }

@@ -1,6 +1,7 @@
 package ru.otus.studenttest.service;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
@@ -9,15 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@SpringBootTest
 public class StudentTestHandlerImplTest {
 
     @Test
     public void testHandle() {
         try {
             PathMatchingResourcePatternResolver scanner = new PathMatchingResourcePatternResolver();
-            Resource[] resources = scanner.getResources("studentTest.csv");
+            Resource[] resources = scanner.getResources("test-en.csv");
             StudentTestParserImpl studentTestParser = new StudentTestParserImpl();
             Map<String, String> tests = studentTestParser.parseResourceContent(resources);
             Set<String> questions = tests.keySet();

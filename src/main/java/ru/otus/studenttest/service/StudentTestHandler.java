@@ -11,4 +11,6 @@ public interface StudentTestHandler {
     String getResponseFromStudent(String question);
 
     void getResult(int counterGoodAnswers, int studentTestSize);
+
+    void closeReader();
 }
