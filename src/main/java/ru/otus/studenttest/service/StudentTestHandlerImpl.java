@@ -1,6 +1,5 @@
 package ru.otus.studenttest.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
@@ -41,8 +40,6 @@ public class StudentTestHandlerImpl implements StudentTestHandler {
      */
     private final int correctAnswersNumberForPassExam;
 
-
-    @Autowired
     public StudentTestHandlerImpl(StudentTestParser studentTestParser,
                                   MessageSourceService messageService,
                                   @Value("${correct-answers-number-for-pass-exam}") int correctAnswersNumberForPassExam) {

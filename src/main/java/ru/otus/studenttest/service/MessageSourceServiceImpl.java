@@ -1,6 +1,5 @@
 package ru.otus.studenttest.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.PropertySource;
@@ -24,7 +23,6 @@ public class MessageSourceServiceImpl implements MessageSourceService {
 
     private final MessageSource messageSource;
 
-    @Autowired
     public MessageSourceServiceImpl(MessageSource messageSource,
                                     @Value("${resource.path-en}") String pathEn,
                                     @Value("${resource.path-ru}") String pathRu) {
