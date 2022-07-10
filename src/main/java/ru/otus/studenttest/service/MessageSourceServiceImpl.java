@@ -63,4 +63,14 @@ public class MessageSourceServiceImpl implements MessageSourceService {
     public String getMessage(String code, Object[] objects) {
         return messageSource.getMessage(code, objects, locale);
     }
+
+    /**
+     * Задать локаль.
+     *
+     * @param locale локаль пользователя
+     */
+    @Override
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
 }
