@@ -36,13 +36,30 @@ public class ResultHandlerCLI {
      */
     @ShellMethod(value = "Show test result", key = {"show", "results", "get-results"})
     public String showResult() {
+        TableModelBuilder<String> modelBuilder = new TableModelBuilder<>();
         List<StudentTest> results = studentTestHandler.getResults();
         if (results.size() == 0) {
             messageService.printMessage(messageService.getMessage("no.result.to.show", new Object[]{}));
             return null;
         }
-        TableModelBuilder<String> modelBuilder = new TableModelBuilder<>();
+        buildResultsTable(modelBuilder, results);
 
+        String table = new TableBuilder(modelBuilder.build())
+                .on(column(0)).addSizer(new AbsoluteWidthSizeConstraints(70)).addAligner(SimpleHorizontalAligner.left)
+                .on(column(1)).addSizer(new AbsoluteWidthSizeConstraints(70)).addAligner(SimpleHorizontalAligner.left)
+                .build()
+                .render(500);
+
+        return table;
+    }
+
+    /**
+     * Построить таблицу результатов.
+     *
+     * @param modelBuilder билдер
+     * @param results результаты теста
+     */
+    public void buildResultsTable(TableModelBuilder<String> modelBuilder, List<StudentTest> results) {
         for (StudentTest result : results) {
             modelBuilder
                     .addRow()
@@ -68,13 +85,5 @@ public class ResultHandlerCLI {
                     .addValue(messageService.getMessage("test.date", new Object[]{}))
                     .addValue(result.getTestDate().toString());
         }
-
-        String table = new TableBuilder(modelBuilder.build())
-                .on(column(0)).addSizer(new AbsoluteWidthSizeConstraints(70)).addAligner(SimpleHorizontalAligner.left)
-                .on(column(1)).addSizer(new AbsoluteWidthSizeConstraints(70)).addAligner(SimpleHorizontalAligner.left)
-                .build()
-                .render(500);
-
-        return table;
     }
 }
