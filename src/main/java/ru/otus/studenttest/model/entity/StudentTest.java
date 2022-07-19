@@ -1,9 +1,18 @@
 package ru.otus.studenttest.model.entity;
 
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Сущность "Тестирования".
  */
 public class StudentTest {
+
+    /**
+     * Порог для прохождения теста
+     */
+    private int goodAnswersNumber;
 
     /**
      * Название ресурса
@@ -11,9 +20,19 @@ public class StudentTest {
     private String resourceName;
 
     /**
-     * Порог для прохождения теста
+     * Имя студента
      */
-    private int goodAnswersNumber;
+    private String nameOfStudent;
+
+    /**
+     * Дата тестирования
+     */
+    private LocalDate testDate;
+
+    /**
+     * Содержит вопросы и баллы за каждый из них
+     */
+    private Map<String, String> results = new HashMap<>();
 
     public StudentTest() {
     }
@@ -32,5 +51,29 @@ public class StudentTest {
 
     public void setGoodAnswersNumber(int goodAnswersNumber) {
         this.goodAnswersNumber = goodAnswersNumber;
+    }
+
+    public LocalDate getTestDate() {
+        return testDate;
+    }
+
+    public void setTestDate(LocalDate testDate) {
+        this.testDate = testDate;
+    }
+
+    public String getNameOfStudent() {
+        return nameOfStudent;
+    }
+
+    public void setNameOfStudent(String nameOfStudent) {
+        this.nameOfStudent = nameOfStudent;
+    }
+
+    public Map<String, String> getResults() {
+        return results;
+    }
+
+    public void setResults(Map<String, String> results) {
+        this.results = results;
     }
 }

@@ -1,7 +1,6 @@
 package ru.otus.studenttest.service;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
@@ -12,7 +11,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
 public class StudentTestHandlerImplTest {
 
     @Test
